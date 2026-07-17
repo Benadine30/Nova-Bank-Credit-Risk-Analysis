@@ -5,7 +5,7 @@
           DATA QUALITY AUDIT 
    -------------------------------- */
 
--- Flaging implausible values (ages that don't exist / income outliers) 
+-- Flaging implausible values (ages that don't exist / income outliers)*/
 SELECT
     client_ID, person_age, person_income, person_emp_length,
     CASE
