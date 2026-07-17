@@ -1,19 +1,41 @@
-# Nova-Bank-Credit-Risk-Analysis
-This is an end-to-end credit risk analytics project on a 32,581-row dataset of borrowers across the USA, UK and Canada, combining T-SQL analysis, and an interactive Power BI dashboard
+**EXECUTIVE SUMMARY**
 
-**Data Overview & Methodology**
-The dataset is a point-in-time snapshot with no date field, so default rates throughout this report describe the existing book, not a forward-looking probability-of-default model. Analysis was performed in two layers: T-SQL queries against MS SQL Server for structured deep-dive analysis (portfolio summary, cohort segmentation, window-function quartile/decile analysis, data quality auditing, and a lending-policy simulation), and a 3-page Power BI report built on 26+ DAX measures for interactive review.
-Risk segments (Safe / Watch / Risky) are a transparent, rule-based classification — not a machine-learning model — defined as: Safe = Grade A/B, DTI < 35%, no prior default on file; Risky = Grade F/G, or DTI ≥ 60%; Watch = everything else. This keeps the segmentation auditable and explainable to underwriting staff, at the cost of being a starting point rather than a fully tuned scorecard.
-<img width="468" height="206" alt="image" src="https://github.com/user-attachments/assets/c7500737-53ef-4e14-aa58-578d2f0297f8" />
+This project delivers an end-to-end credit risk analysis for Nova Bank using SQL Server and Power BI. The objective was to identify the key drivers of loan default, evaluate borrower risk, and provide data-driven recommendations to support better lending decisions.
+The analysis was performed on 32,581 loan applications across the United States, United Kingdom, and Canada, representing over $312 million in total loan value. SQL was used for data cleaning, transformation, exploratory analysis, and business reporting, while Power BI was used to build an interactive dashboard for portfolio monitoring and risk analysis.
 
-**Executive Summary**
-Nova Bank's portfolio of 32,581 loan applications across the USA, UK, and Canada carries an overall default rate of 21.8% (78.2% non-default rate) on $312.4M of total loan value, of which $77.1M (24.7%) sits in loans that ultimately defaulted. This report is built directly from, and validated against, the 3-page Power BI Report 
-The core finding, confirmed across every page of the dashboard, is that repayment behaviour is driven by a small set of underwriting variables — loan grade, debt-to-income ratio, loan-to-income ratio, and prior default history — while location, gender, employment type, and marital status carry little to no standalone predictive value. This is a reassuring fair-lending signal, but it also means the bank's existing grade and affordability data already contains most of the risk signal it needs; no new data collection is required to act on these findings.
-Three findings carry the most weight for underwriting policy:
-•	Risk segment, not geography or demographics, explains default. The Risky segment (4.9% of the book, 1,591 applicants) defaults at 72.5% — more than 12x the Safe segment's 5.9%.
-•	Default rate is flat within a 20.9%–22.5% band across every state and province, and within 1.5 points across every home-loan-purpose category — geography and (individually) employment type are not risk drivers.
-•	Home ownership is the one demographic-adjacent field that does move the needle: renters default at 31.6% versus 7.5% for outright homeowners, a 4x spread almost certainly reflecting equity cushion rather than tenure itself.
-A data quality issue was identified and corrected during analysis: 58 records (0.18%) carried implausible ages (up to 144 years) or incomes (up to $6M). These were excluded from distributional charts (e.g. the income-vs-default scatter) but retained in portfolio totals, since their share is negligible; they are flagged here for the record.
+The results show that loan grade, debt-to-income ratio (DTI), loan-to-income ratio (LTI), prior default history, and home ownership are the strongest indicators of credit risk, whereas geography, gender, employment type, marital status, and education have little or no standalone predictive value. These insights provide a transparent framework for improving underwriting decisions and reducing portfolio risk.
+
+**DATA OVERVIEW & METHODOLOGY**
+
+The dataset contains 32,581 loan applications with 29 attributes, including borrower demographics, loan details, employment information, income, loan grade, repayment status, debt-to-income ratio, prior default history, and home ownership.
+
+**The project followed an end-to-end analytics workflow:**
+. Imported and cleaned the dataset using SQL Server.
+. Identified and handled data quality issues, including invalid age and income records.
+. Performed exploratory data analysis using SQL.
+. Used joins, CASE statements, aggregate functions, Common Table Expressions (CTEs), window functions, and ranking functions to generate business insights.
+. Created a rule-based risk segmentation model (Safe, Watch, and Risky) based on loan grade, DTI, and previous default history.
+. Built an interactive three-page Power BI dashboard using DAX measures to visualize portfolio performance and credit risk.
+
+The analysis focuses on understanding the current loan portfolio rather than building a predictive machine learning model.
+
+**KEY INSIGHTS**
+. The loan portfolio consists of 32,581 applications with a 21.8% default rate and 78.2% non-default rate, representing over $312 million in total loan value.
+. Loan grade is the strongest predictor of default. Default rates increase significantly from Grade A (10.0%) to Grade G (98.4%), with the largest jump occurring between Grades C and D.
+. Debt consolidation and medical loans recorded the highest default rates, while education and business (venture) loans performed considerably better.
+. Affordability metrics, particularly debt-to-income and loan-to-income ratios, explain borrower risk better than annual income alone.
+. Home ownership is a strong indicator of repayment behaviour. Renters default at approximately four times the rate of borrowers who own their homes outright.
+. Geography, gender, marital status, employment type, and education showed little or no meaningful relationship with default risk, suggesting these variables should not be primary underwriting factors.
+. The custom Risk Segmentation Model effectively separates borrowers into Safe, Watch, and Risky groups, with the Risky segment defaulting at over twelve times the rate of the Safe segment despite representing less than 5% of applicants.
+
+**RECOMMENDATIONS**
+. Strengthen underwriting for Grades D through G, particularly Grades F and G, by introducing stricter approval criteria or mandatory manual reviews.
+. Use debt-to-income and loan-to-income ratios alongside loan grades during credit assessment to better identify borrowers with affordability risks.
+. Prioritize applicants with multiple risk indicators, such as high DTI, high LTI, and previous defaults, for manual review before loan approval.
+. Increase monitoring of debt consolidation and medical loans, as these loan purposes consistently demonstrate higher default risk.
+. Use home ownership status as an additional risk assessment factor, since renters exhibit substantially higher default rates than homeowners.
+. Avoid using geography, gender, marital status, education, or employment type as approval or pricing factors because the analysis found no meaningful evidence that they independently predict loan default.
+. Continue monitoring portfolio performance through interactive dashboards to identify changes in borrower risk and support evidence-based lending decisions.
 
 
 
