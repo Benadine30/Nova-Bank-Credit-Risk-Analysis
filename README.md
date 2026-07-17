@@ -5,6 +5,7 @@ The analysis was performed on 32,581 loan applications across the United States,
 
 The results show that loan grade, debt-to-income ratio (DTI), loan-to-income ratio (LTI), prior default history, and home ownership are the strongest indicators of credit risk, whereas geography, gender, employment type, marital status, and education have little or no standalone predictive value. These insights provide a transparent framework for improving underwriting decisions and reducing portfolio risk.
 
+
 **DATA OVERVIEW & METHODOLOGY**
 
 The dataset contains 32,581 loan applications with 29 attributes, including borrower demographics, loan details, employment information, income, loan grade, repayment status, debt-to-income ratio, prior default history, and home ownership.
@@ -27,6 +28,7 @@ The dataset contains 32,581 loan applications with 29 attributes, including borr
 The analysis focuses on understanding the current loan portfolio rather than building a predictive machine learning model.
 
 
+
 **KEY INSIGHTS**
 
 . The loan portfolio consists of 32,581 applications with a 21.8% default rate and 78.2% non-default rate, representing over $312 million in total loan value.
@@ -42,6 +44,7 @@ The analysis focuses on understanding the current loan portfolio rather than bui
 . Geography, gender, marital status, employment type, and education showed little or no meaningful relationship with default risk, suggesting these variables should not be primary underwriting factors.
 
 . The custom Risk Segmentation Model effectively separates borrowers into Safe, Watch, and Risky groups, with the Risky segment defaulting at over twelve times the rate of the Safe segment despite representing less than 5% of applicants.
+
 
 
 **RECOMMENDATIONS**
